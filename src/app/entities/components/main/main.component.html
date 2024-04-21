@@ -1,27 +1,61 @@
 <div class="left">
   <form [formGroup]="heroForm" (ngSubmit)="onSave()">
     <div class="create">
-        <input type="text"
-               formControlName="name"/>
+        <p>Name</p>
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput
+                formControlName="name"
+                type="text"/>
+        </mat-form-field>
+        <p>Strength</p>
+        <mat-form-field appearance="outline">
+          <mat-label>Strength</mat-label>
+          <input matInput
+                 formControlName="strength"
+                 type="text"/>
+        </mat-form-field>
+        <p>Powers</p>
+        <mat-form-field appearance="outline">
+          <mat-label>Power</mat-label>
+          <mat-select multiple
+                      formControlName="skill">
+            <mat-option *ngFor="let val of powers" [value]="val">
+              {{ val }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <p>Level</p>
+        <mat-form-field appearance="outline">
+          <mat-label>Level</mat-label>
+          <input matInput
+                formControlName="lvl"
+                type="text"/>
+        </mat-form-field>
         <br/>
-        <input type="text"
-               formControlName="strength"/>
-        <br/>
-        <input type="text"
-               formControlName="skill"/>
-        <br/>
-        <input type="text"
-               formControlName="lvl"/>
-        <br/>
-        <button type="submit">Create</button>
-    </div>
-    <div class="skill">
-      <p>Добавление способностей</p>
-      <input type="text"/>
-      <br/>
-      <button>Add skill</button>
+        <button mat-raised-button
+                [disabled]="!heroForm.valid"
+                type="submit"
+                color="primary">Create</button>
     </div>
   </form>
+  <form [formGroup]="power">
+    <div class="skill">
+      <p>Добавление способностей</p>
+      <mat-form-field appearance="outline">
+        <mat-label>New power</mat-label>
+        <input matInput
+              formControlName="power"
+              type="text"/>
+      </mat-form-field>
+      <br/>
+      <button mat-raised-button
+              [disabled]="!power.valid"
+              color="primary"
+              (click)="addPower()">Add skill</button>
+    </div>
+  </form>
+
 </div>
 
 <div class="right">

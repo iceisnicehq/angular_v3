@@ -1,6 +1,6 @@
 export interface INeedAHero {
   name: string,
-  strength: string,
+  strength: string[],
   skill: string,
   lvl: string,
 }

@@ -30,4 +30,9 @@ export class CreateForm {
         lvl: new FormControl('', [Validators.required])
       });
   }
+  public createPowerForm(): FormGroup {
+    return this._fb.group({
+      power: new FormControl('', [Validators.required]),
+    });
+  }
 }

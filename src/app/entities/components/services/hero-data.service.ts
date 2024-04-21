@@ -12,10 +12,10 @@ export class HeroDataService {
     name: 'Superman',
     skill: 'Strength',
     lvl: "10",
-    strength: "10",
+    strength: ["10"],
   },
 ]
-/* . . . */
+  public heroPower: string[] = ['Strength', 'Speed', 'Flight']
 
   addHero(hero: INeedAHero) {
     this.hallOfHeroes.push(hero);
