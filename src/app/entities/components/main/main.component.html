@@ -145,7 +145,7 @@
           <br/>
           <mat-form-field appearance="outline">
             <mat-label>Level</mat-label>
-            <mat-select>
+            <mat-select [(value)]="sortOrder" (valueChange)="sortHeroesByLevel(sortOrder)">
               <mat-option value="asc">
                 Ascending
               </mat-option>
