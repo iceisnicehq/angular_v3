@@ -4,7 +4,7 @@
     position: absolute;
     height: 100%;
     width: 24%;
-    left: 25px;
+    left: 16px;
     // background-color: #183891;
     display: flex;
     align-items: center;
@@ -41,28 +41,31 @@
     }
   }
 
-  /* Control the right side */
   .right {
     right: 48px;
     height: 100%;
     width: 60%;
+    padding-right: 60px;
     position: absolute;
-    background-color: red;
     .filter {
       border: black solid;
       padding-bottom: 20px;
+      margin-bottom: 60px;
+    }
+    mat-expansion-panel {
+      border: solid black;
+      border-radius: 0;
+      margin-top: 10px;
+      margin-bottom: 30px;
+      mat-expansion-panel-header {
+        padding: 0 28px 30px;
+      }
+      button {
+        left: 100px;
+      }
     }
     // display: flex;
     // align-items: center;
     // flex-direction: column;
   }
-
-  /* If you want the content centered horizontally and vertically */
-  // .centered {
-  //   position: absolute;
-  //   top: 50%;
-  //   left: 50%;
-  //   transform: translate(-50%, -50%);
-  //   text-align: center;
-  // }
 }

@@ -26,13 +26,16 @@ export class MainComponent {
 
   public onSave(): void {
     this._hero.hallOfHeroes.push(this.heroForm.value)
-    console.table(this.heroForm.value)
+    // console.table(this.heroForm.value)
     this.heroForm.reset()
-    console.log(this._hero.hallOfHeroes)
+    // console.log(this._hero.hallOfHeroes)
   }
   public addPower(): void {
     this.powers.push(this.power.value.power)
     this.power.reset()
     console.log(this.powers)
+  }
+  public onDelete(hero: INeedAHero): void {
+    this._hero.deleteHero(hero);
   }
 }

@@ -14,6 +14,18 @@ export class HeroDataService {
     lvl: "10",
     strength: ["10"],
   },
+    {
+    name: 'Batman',
+    skill: 'Stealth',
+    lvl: "10",
+    strength: ["10"],
+  },
+    {
+    name: 'Wonder Woman',
+    skill: 'Strength',
+    lvl: "10",
+    strength: ["10"],
+  },
 ]
   public heroPower: string[] = ['Strength', 'Speed', 'Flight']
 
@@ -23,5 +35,9 @@ export class HeroDataService {
 
   getHeroes() {
     return this.hallOfHeroes;
+  }
+  public deleteHero(hero: INeedAHero): void {
+    const index: number = this.hallOfHeroes.findIndex((item) => item === hero);
+    this.hallOfHeroes.splice(index, 1);
   }
 }

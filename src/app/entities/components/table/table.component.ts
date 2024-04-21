@@ -8,13 +8,12 @@ import { INeedAHero } from '../../interfaces/app.interface';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent {
-  public tableData = this.heroDataService.getHeroes();
+  public tableData = this._hero.getHeroes();
   displayedColumns: string[] = ['name', 'lvl', 'strength', 'skill', 'delete'];
   dataSource = this.tableData;
-  constructor(private readonly heroDataService: HeroDataService) { }
- public onDelete(item: INeedAHero): void {
-  console.log(item)
-  // do something
-
+  constructor(private readonly _hero: HeroDataService) {}
+ public onDelete(hero: INeedAHero): void {
+  this._hero.deleteHero(hero);
+    // this.table?.renderRows();
 }
 }

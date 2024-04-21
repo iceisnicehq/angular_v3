@@ -21,7 +21,7 @@
           <mat-select multiple
                       formControlName="skill">
             <mat-option *ngFor="let val of powers" [value]="val">
-              {{ val }}
+              {{  val  }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -104,17 +104,21 @@
   </div>
   <div>
     <!-- neeeds ng for for all heroes -->
-    <mat-expansion-panel (opened)="panelOpenState = true"
-    (closed)="panelOpenState = false">
+    <mat-expansion-panel *ngFor="let hero of data">
     <mat-expansion-panel-header>
-    <mat-panel-title>
-    Self aware panel
-    </mat-panel-title>
-    <mat-panel-description>
-    Currently I am {{panelOpenState ? 'open' : 'closed'}}
-    </mat-panel-description>
+      <mat-panel-description>
+      {{ hero.name }}
+      </mat-panel-description>
     </mat-expansion-panel-header>
-    <p>I'm visible because I am open</p>
+    <p>Name: {{ hero.name }}</p>
+    <p>Strength: {{ hero.strength }}</p>
+    <p>Powers: {{ hero.skill }}</p>
+    <p>Level: {{ hero.lvl }}</p>
+    <button (click)="onDelete(hero)"
+             mat-raised-button>
+            Delete {{ hero.name }}
+    </button>
     </mat-expansion-panel>
   </div>
 </div>
+
