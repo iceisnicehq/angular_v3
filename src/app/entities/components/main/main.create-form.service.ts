@@ -5,7 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { INeedAHero } from '../../interfaces/app.interface';
+// import { INeedAHero } from '../../interfaces/app.interface';
 /**
  * @service {createDialogForm}
  * @description для создания реактивных форм
@@ -26,7 +26,7 @@ export class CreateForm {
       return this._fb.group({
         name: new FormControl('', [Validators.required]),
         strength: new FormControl('', [Validators.required]),
-        skill: new FormControl('', [Validators.required]),
+        power: new FormControl('', [Validators.required]),
         lvl: new FormControl('', [Validators.required])
       });
   }

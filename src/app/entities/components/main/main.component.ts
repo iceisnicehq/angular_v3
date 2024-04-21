@@ -1,9 +1,10 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { CreateForm } from './main.create-form.service';
-import { FormControl, FormGroup } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormGroup } from '@angular/forms';
+// import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { INeedAHero } from '../../interfaces/app.interface';
 import { HeroDataService } from '../services/hero-data.service';
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -25,10 +26,11 @@ export class MainComponent {
   }
 
   public onSave(): void {
-    this._hero.hallOfHeroes.push(this.heroForm.value)
-    // console.table(this.heroForm.value)
+    this._hero.hallOfHeroes.push(this.heroForm.value);
+    this.data = this._hero.getHeroes();
     this.heroForm.reset()
-    // console.log(this._hero.hallOfHeroes)
+    this.nameFilter(new Event (''))
+    // this.levelFilter(new Event (''), new Event(''))
   }
   public addPower(): void {
     if (this.powers.includes(this.power.value.power)) {
@@ -42,5 +44,14 @@ export class MainComponent {
 }
   public onDelete(hero: INeedAHero): void {
     this._hero.deleteHero(hero);
+  }
+  public nameFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.data = this._hero.getHeroes().filter(hero => hero.name.toLowerCase().includes(filterValue.toLowerCase()));
+  }
+  public levelFilter(minLevelInput: HTMLInputElement, maxLevelInput: HTMLInputElement): void {
+    const minLevel = parseInt(minLevelInput.value, 10);
+    const maxLevel = parseInt(maxLevelInput.value, 10);
+    this.data = this._hero.getHeroes().filter(hero => hero.lvl >= minLevel && hero.lvl <= maxLevel);
   }
 }

@@ -23,20 +23,21 @@
       //   height: 10px;
       //   }
         button {
-          margin: 10px;
-          // position: relative;
-          left: 120px;
+          margin-bottom: 10px;
+          display: block;
+          margin-left: 54%;
 
         }
     }
-    .skill {
+    .power {
       border: black solid;
       padding: 0 28px 10px;
       margin: 30px;
       width: 80%;
       button {
-        margin: 10px;
-        left: 100px;
+        margin-bottom: 10px;
+        display: block;
+        margin-left: 38%;
       }
     }
   }
@@ -48,9 +49,18 @@
     padding-right: 60px;
     position: absolute;
     .filter {
+      padding-top: 25px;
       border: black solid;
       padding-bottom: 20px;
       margin-bottom: 60px;
+      mat-grid-list {
+        .toggles {
+            width: 65px;
+        }
+        .search {
+          width: auto;
+        }
+      }
     }
     mat-expansion-panel {
       border: solid black;
@@ -61,11 +71,10 @@
         padding: 0 28px 30px;
       }
       button {
-        left: 100px;
+        display: block;
+        margin-left: auto;
+        margin-right: 0;
       }
     }
-    // display: flex;
-    // align-items: center;
-    // flex-direction: column;
   }
 }

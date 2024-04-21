@@ -1,27 +1,30 @@
 <div class="left">
-  <form [formGroup]="heroForm" (ngSubmit)="onSave()">
+  <form [formGroup]="heroForm">
     <div class="create">
         <p>Name</p>
         <mat-form-field appearance="outline">
           <mat-label>Name</mat-label>
           <input matInput
                 formControlName="name"
-                type="text"/>
+                type="text"
+                pattern="^[a-zA-zа-яА-я\s]*$"/>
         </mat-form-field>
         <p>Strength</p>
         <mat-form-field appearance="outline">
           <mat-label>Strength</mat-label>
           <input matInput
                  formControlName="strength"
-                 type="text"/>
+                 type="number"
+                 min="1"
+                 max="10"/>
         </mat-form-field>
         <p>Powers</p>
         <mat-form-field appearance="outline">
           <mat-label>Power</mat-label>
           <mat-select multiple
-                      formControlName="skill">
-            <mat-option *ngFor="let val of powers" [value]="val">
-              {{  val  }}
+                      formControlName="power">
+            <mat-option *ngFor="let val of powers" [value]="' ' + val">
+              {{ val }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -30,17 +33,21 @@
           <mat-label>Level</mat-label>
           <input matInput
                 formControlName="lvl"
-                type="text"/>
+                type="number"
+                min="1"
+                max="10"/>
         </mat-form-field>
         <br/>
         <button mat-raised-button
                 [disabled]="!heroForm.valid"
-                type="submit"
-                color="primary">Create</button>
+                type="button"
+                (click)="onSave()"
+                color="primary"
+                >Create</button>
     </div>
   </form>
   <form [formGroup]="power">
-    <div class="skill">
+    <div class="power">
       <p>Добавление способностей</p>
       <mat-form-field appearance="outline">
         <mat-label>New power</mat-label>
@@ -52,7 +59,8 @@
       <button mat-raised-button
               [disabled]="!power.valid"
               color="primary"
-              (click)="addPower()">Add skill</button>
+              (click)="addPower()"
+              type="button">Add power</button>
     </div>
   </form>
 
@@ -60,44 +68,92 @@
 
 <div class="right">
   <div class="filter">
-    <mat-grid-list cols="12" rowHeight="65px">
+    <mat-grid-list cols="12" rowHeight="80px">
       <mat-grid-tile
           [colspan]="2"
-          [rowspan]="2"
-          [style.background]="'lightblue'">
+          [rowspan]="2">
         <div>
-          <p>Уровень героя</p>
-          <p>Поиск по имени</p>
-
+          <p>Hero's level:</p>
+          <br/>
+          <p>Search by name</p>
         </div>
       </mat-grid-tile>
-
       <mat-grid-tile
       [colspan]="4"
-      [rowspan]="2"
-      [style.background]="'green'">
+      [rowspan]="2">
       <div>
-        <p> от <input type="number" style="width: 100px;"> до <input type="text" size="2"> </p>
-        <input type="text">
+        <span> от
+          <mat-form-field class="toggles" appearance="outline">
+            <input matInput
+                   type="number"
+                   min="1"
+                   max="10"
+                   value="1"
+                   #minLevelInput
+                   (change)="levelFilter(minLevelInput, maxLevelInput)">
+                   <input #minLevelInput type="number" min="1" max="10" hidden>
+
+          </mat-form-field >
+          <span style="display:inline-block; width: 16%;">
+          </span>
+        </span>
+        <span>
+          до
+          <mat-form-field class="toggles" appearance="outline">
+            <input matInput
+                  type="number"
+                  min="1"
+                  max="10"
+                  value="10"
+                  #maxLevelInput
+                  (change)="levelFilter(minLevelInput, maxLevelInput)">
+                  <input #maxLevelInput type="number" min="1" max="10" hidden>
+          </mat-form-field>
+          </span>
+          <br/>
+          <mat-form-field class="search" appearance="outline">
+            <input matInput
+                  type="text"
+                  pattern="^[a-zA-zа-яА-я\s]*$"
+                  (keyup)="nameFilter($event)"
+                  #input/>
+          </mat-form-field>
       </div>
       </mat-grid-tile>
 
       <mat-grid-tile
       [colspan]="3"
-      [rowspan]="2"
-      [style.background]="'pink'">
+      [rowspan]="2">
         <div>
-          <p>Способности</p>
-          <p>Сортировка по уровню</p>
+          <p>Powers</p>
+          <br/>
+          <p>Sort by level</p>
         </div>
       </mat-grid-tile>
       <mat-grid-tile
       [colspan]="3"
-      [rowspan]="2"
-      [style.background]="'pink'">
+      [rowspan]="2">
         <div>
-          <p><input type="number" style="width: 100px;"></p>
-          <p><input type="text" size="10"></p>
+          <mat-form-field appearance="outline">
+            <mat-label>Power</mat-label>
+            <mat-select multiple>
+              <mat-option *ngFor="let val of powers" [value]="' ' + val">
+                {{ val }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br/>
+          <mat-form-field appearance="outline">
+            <mat-label>Level</mat-label>
+            <mat-select>
+              <mat-option value="asc">
+                Ascending
+              </mat-option>
+              <mat-option value="desc">
+                Descending
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
       </mat-grid-tile>
     </mat-grid-list>
@@ -112,7 +168,7 @@
     </mat-expansion-panel-header>
     <p>Name: {{ hero.name }}</p>
     <p>Strength: {{ hero.strength }}</p>
-    <p>Powers: {{ hero.skill }}</p>
+    <p>Powers: {{ hero.power }}</p>
     <p>Level: {{ hero.lvl }}</p>
     <button (click)="onDelete(hero)"
              mat-raised-button>

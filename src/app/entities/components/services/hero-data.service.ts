@@ -10,30 +10,30 @@ export class HeroDataService {
   public hallOfHeroes: INeedAHero[] = [
     {
     name: 'Superman',
-    skill: 'Strength',
-    lvl: "10",
-    strength: ["10"],
+    power: 'Strength',
+    lvl: 10,
+    strength: "10",
   },
     {
     name: 'Batman',
-    skill: 'Stealth',
-    lvl: "10",
-    strength: ["10"],
+    power: 'Stealth',
+    lvl: 5,
+    strength: "10",
   },
     {
     name: 'Wonder Woman',
-    skill: 'Strength',
-    lvl: "10",
-    strength: ["10"],
+    power: 'Strength',
+    lvl: 8,
+    strength: "10",
   },
 ]
   public heroPower: string[] = ['Strength', 'Speed', 'Flight']
 
-  addHero(hero: INeedAHero) {
+  public addHero(hero: INeedAHero): void {
     this.hallOfHeroes.push(hero);
   }
 
-  getHeroes() {
+  public getHeroes(): INeedAHero[] {
     return this.hallOfHeroes;
   }
   public deleteHero(hero: INeedAHero): void {

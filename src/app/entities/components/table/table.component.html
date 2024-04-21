@@ -11,7 +11,7 @@
     <td>{{ hero.name }}</td>
     <td>{{ hero.lvl }}</td>
     <td>{{ hero.strength }}</td>
-    <td>{{ hero.skill }}</td>
+    <td>{{ hero.power }}</td>
     <td>
       <button (click)="onDelete(hero)"
                mat-fab color="warn">
@@ -39,9 +39,9 @@
       <td mat-cell *matCellDef="let hero"> {{hero.strength}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="skill">
+    <ng-container matColumnDef="power">
       <th mat-header-cell *matHeaderCellDef> Abilities </th>
-      <td mat-cell *matCellDef="let hero"> {{hero.skill}} </td>
+      <td mat-cell *matCellDef="let hero"> {{hero.power}} </td>
     </ng-container>
 
     <ng-container matColumnDef="delete">
