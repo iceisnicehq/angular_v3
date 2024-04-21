@@ -3,7 +3,7 @@ import { CreateForm } from './main.create-form.service';
 import { FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { INeedAHero } from '../../interfaces/app.interface';
-import { HeroDataService } from '../hero-data.service';
+import { HeroDataService } from '../services/hero-data.service';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
