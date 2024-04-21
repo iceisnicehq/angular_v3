@@ -1,0 +1,81 @@
+<div class="left">
+  <div class="create">
+      <input type="text"/>
+      <br/>
+      <input type="text"/>
+      <br/>
+      <input type="text"/>
+      <br/>
+      <input type="text">
+      <br>
+      <button>Create</button>
+  </div>
+  <div class="skill">
+    <p>Добавление способностей</p>
+    <input type="text"/>
+    <br/>
+    <button>Add skill</button>
+  </div>
+
+</div>
+
+<div class="right">
+  <div class="filter">
+    <mat-grid-list cols="12" rowHeight="65px">
+      <mat-grid-tile
+          [colspan]="2"
+          [rowspan]="2"
+          [style.background]="'lightblue'">
+        <div>
+          <p>Уровень героя</p>
+          <p>Поиск по имени</p>
+
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile
+      [colspan]="4"
+      [rowspan]="2"
+      [style.background]="'green'">
+      <div>
+        <p> от <input type="number" style="width: 100px;"> до <input type="text" size="2"> </p>
+        <input type="text">
+      </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile
+      [colspan]="3"
+      [rowspan]="2"
+      [style.background]="'pink'">
+        <div>
+          <p>Способности</p>
+          <p>Сортировка по уровню</p>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile
+      [colspan]="3"
+      [rowspan]="2"
+      [style.background]="'pink'">
+        <div>
+          <p><input type="number" style="width: 100px;"></p>
+          <p><input type="text" size="10"></p>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <div>
+    <!-- neeeds ng for for all heroes -->
+    <mat-expansion-panel (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+    <mat-panel-title>
+    Self aware panel
+    </mat-panel-title>
+    <mat-panel-description>
+    Currently I am {{panelOpenState ? 'open' : 'closed'}}
+    </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>I'm visible because I am open</p>
+    </mat-expansion-panel>
+  </div>
+</div>

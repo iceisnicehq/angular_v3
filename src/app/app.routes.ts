@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { TableComponent } from './table/table.component';
-import { MainComponent } from './main/main.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TableComponent } from './entities/components/table/table.component';
+import { MainComponent } from './entities/components/main/main.component';
+import { PageNotFoundComponent } from './entities/components/page-not-found/page-not-found.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: '/main', pathMatch: 'full'},

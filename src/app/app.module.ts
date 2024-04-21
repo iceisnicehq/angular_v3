@@ -1,13 +1,20 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
 
-import { AppComponent } from './app.component';
-import { TableComponent } from './table/table.component';
-import { MainComponent } from './main/main.component';
-import { RouterLinkActive, RouterLink, RouterOutlet, provideRouter } from '@angular/router';
-import { routes } from './app.routes';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppComponent } from "./app.component";
+import { TableComponent } from "./entities/components/table/table.component";
+import { MainComponent } from "./entities/components/main/main.component";
+import {
+  RouterLinkActive,
+  RouterLink,
+  RouterOutlet,
+  provideRouter,
+} from "@angular/router";
+import { routes } from "./app.routes";
+import { PageNotFoundComponent } from "./entities/components/page-not-found/page-not-found.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatGridListModule } from "@angular/material/grid-list";
+import { MatExpansionModule } from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
@@ -21,9 +28,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RouterOutlet,
     RouterLinkActive,
     RouterLink,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatGridListModule,
+    MatExpansionModule,
   ],
   providers: [provideRouter(routes)],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
