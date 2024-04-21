@@ -1,22 +1,27 @@
 <div class="left">
-  <div class="create">
+  <form [formGroup]="heroForm" (ngSubmit)="onSave()">
+    <div class="create">
+        <input type="text"
+               formControlName="name"/>
+        <br/>
+        <input type="text"
+               formControlName="strength"/>
+        <br/>
+        <input type="text"
+               formControlName="skill"/>
+        <br/>
+        <input type="text"
+               formControlName="lvl"/>
+        <br/>
+        <button type="submit">Create</button>
+    </div>
+    <div class="skill">
+      <p>Добавление способностей</p>
       <input type="text"/>
       <br/>
-      <input type="text"/>
-      <br/>
-      <input type="text"/>
-      <br/>
-      <input type="text">
-      <br>
-      <button>Create</button>
-  </div>
-  <div class="skill">
-    <p>Добавление способностей</p>
-    <input type="text"/>
-    <br/>
-    <button>Add skill</button>
-  </div>
-
+      <button>Add skill</button>
+    </div>
+  </form>
 </div>
 
 <div class="right">
