@@ -30,7 +30,8 @@ export class MainComponent {
     this.data = this._hero.getHeroes();
     this.heroForm.reset()
     this.nameFilter(new Event (''))
-    // this.levelFilter(new Event (''), new Event(''))
+    // this.levelFilter(minLevelInput: HTMLInputElement, maxLevelInput: HTMLInputElement);
+
   }
   public addPower(): void {
     if (this.powers.includes(this.power.value.power)) {
