@@ -31,10 +31,15 @@ export class MainComponent {
     // console.log(this._hero.hallOfHeroes)
   }
   public addPower(): void {
+    if (this.powers.includes(this.power.value.power)) {
+      alert("This power is already in the list.");
+    }
+    else {
     this.powers.push(this.power.value.power)
     this.power.reset()
     console.log(this.powers)
   }
+}
   public onDelete(hero: INeedAHero): void {
     this._hero.deleteHero(hero);
   }
