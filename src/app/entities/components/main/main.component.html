@@ -86,13 +86,11 @@
           <mat-form-field class="toggles" appearance="outline">
             <input matInput
                    type="number"
-                   min="1"
-                   max="10"
-                   value="1"
+                   min=1
+                   max=10
+                   [value]="minLvl"
                    #minLevelInput
-                   (change)="levelFilter(minLevelInput, maxLevelInput)">
-                   <input #minLevelInput type="number" min="1" max="10" hidden>
-
+                   (change)="levelFilter(minLevelInput.value, maxLevelInput.value)">
           </mat-form-field >
           <span style="display:inline-block; width: 16%;">
           </span>
@@ -102,12 +100,11 @@
           <mat-form-field class="toggles" appearance="outline">
             <input matInput
                   type="number"
-                  min="1"
-                  max="10"
-                  value="10"
+                  min=1
+                  max=10
+                  [value]="maxLvl"
                   #maxLevelInput
-                  (change)="levelFilter(minLevelInput, maxLevelInput)">
-                  <input #maxLevelInput type="number" min="1" max="10" hidden>
+                  (change)="levelFilter(minLevelInput.value, maxLevelInput.value)">
           </mat-form-field>
           </span>
           <br/>
@@ -115,7 +112,8 @@
             <input matInput
                   type="text"
                   pattern="^[a-zA-zа-яА-я\s]*$"
-                  (keyup)="nameFilter($event)"
+                  [value]="nameFilter"
+                  (keyup)="filterByName(input.value)"
                   #input/>
           </mat-form-field>
       </div>
@@ -136,7 +134,7 @@
         <div>
           <mat-form-field appearance="outline">
             <mat-label>Power</mat-label>
-            <mat-select multiple>
+            <mat-select multiple [value]="powerFilter" #select (valueChange)="filterByPower(select.value) ">
               <mat-option *ngFor="let val of powers" [value]="val">
                 {{ val }}
               </mat-option>

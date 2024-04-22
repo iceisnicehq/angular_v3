@@ -11,13 +11,13 @@ export class HeroDataService {
   public hallOfHeroes: INeedAHero[] = [
     {
     name: 'Superman',
-    power: ['Strength'],
+    power: ['Strength', 'Flight', 'Alien', 'Smart'],
     lvl: 10,
     strength: "10",
   },
     {
     name: 'Batman',
-    power: ['Stealth', 'Speed'],
+    power: ['Stealth', 'Speed', 'Human', 'Smart'],
     lvl: 5,
     strength: "10",
   },
@@ -28,7 +28,7 @@ export class HeroDataService {
     strength: "10",
   },
 ]
-  public heroPower: string[] = ['Strength', 'Speed', 'Flight']
+  public heroPower: string[] = ['Strength', 'Speed', 'Flight', 'Stealth', 'Woman', 'Human', 'Alien', 'Smart']
 
   public addHero(hero: INeedAHero): void {
     this.hallOfHeroes.push(hero);

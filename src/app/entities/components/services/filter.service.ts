@@ -10,6 +10,7 @@ export class FilterService {
   public orderFilter: string = 'desc'
   public minLvlFilter: number = 1
   public maxLvlFilter: number = 10
+
   constructor() {}
 
   public filterByName(name: string, data: INeedAHero): void {
@@ -17,11 +18,11 @@ export class FilterService {
     // const filterValue = (event.target as HTMLInputElement).value;
     // this.data = this._hero.getHeroes().filter(hero => hero.name.toLowerCase().includes(filterValue.toLowerCase()));
   }
-  public filterByLevel(minLevelInput: HTMLInputElement, maxLevelInput: HTMLInputElement): void {
-    // const minLevel = parseInt(minLevelInput.value, 10);
-    // const maxLevel = parseInt(maxLevelInput.value, 10);
-    // this.data = this._hero.getHeroes().filter(hero => hero.lvl >= minLevel && hero.lvl <= maxLevel);
-  }
+  // public levelFilter(minLevelInput: HTMLInputElement, maxLevelInput: HTMLInputElement): void {
+  //   this.minLvlFilter = parseInt(minLevelInput.value, 10);
+  //   this.maxLvlFilter = parseInt(maxLevelInput.value, 10);
+  //   this.data = this._hero.getHeroes().filter(hero => hero.lvl >= this.minLvl && hero.lvl <= this.maxLvl);
+  // }
   public sortByLevel(order: string): void {
     // this.sortOrder = order;
     // this.data.sort((a, b) => {
