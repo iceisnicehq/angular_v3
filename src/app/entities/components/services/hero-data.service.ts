@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 // import { BehaviorSubject, Subject } from 'rxjs';
 import { INeedAHero } from '../../interfaces/app.interface';
+// import { FilterService } from './filter.service';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +33,15 @@ export class HeroDataService {
   public addHero(hero: INeedAHero): void {
     this.hallOfHeroes.push(hero);
   }
-  // public addPower() {}
+
+  public addPower(power: string): void {
+    if (this.heroPower.includes(power)) {
+      alert("This power is already in the list.");
+    }
+    else {
+    this.heroPower.push(power)
+  }
+  }
 
   public getHeroes(): INeedAHero[] {
     return this.hallOfHeroes;

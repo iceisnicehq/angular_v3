@@ -4,6 +4,7 @@ import { FormGroup } from '@angular/forms';
 // import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { INeedAHero } from '../../interfaces/app.interface';
 import { HeroDataService } from '../services/hero-data.service';
+import { FilterService } from '../services/filter.service';
 
 /**  TODO {Sorting Based On Power(s) + after adding a hero}
           {Sorting Based On Level(min-max) after adding a hero}
@@ -19,19 +20,20 @@ import { HeroDataService } from '../services/hero-data.service';
 })
 export class MainComponent {
   public data: INeedAHero[] = this._hero.getHeroes();
-  public powers: string[] = this._hero.heroPower;
+  public heroForm: FormGroup = this._fb.createForm()
   public power: FormGroup = this._fb.createPowerForm()
-  public sortOrder: string = 'desc';
+  public powers: string[] = this._hero.heroPower;
+  public sortOrder: string = this._filter.orderFilter;
 
   public panelOpenState: boolean = false;
 
-  public heroForm: FormGroup = this._fb.createForm()
+
 
   constructor(
     private readonly _fb: CreateForm,
-    private readonly _hero: HeroDataService
-  ) {
-  }
+    private readonly _hero: HeroDataService,
+    private readonly _filter: FilterService
+  ) {}
 
   public onSave(): void {
     this._hero.hallOfHeroes.push(this.heroForm.value);
@@ -43,19 +45,15 @@ export class MainComponent {
     // this.levelFilter(minLevelInput: HTMLInputElement, maxLevelInput: HTMLInputElement);
 
   }
-  public addPower(): void {
-    if (this.powers.includes(this.power.value.power)) {
-      alert("This power is already in the list.");
-    }
-    else {
-    this.powers.push(this.power.value.power)
+  public onPower(): void {
+    this._hero.addPower(this.power.value.power)
     this.power.reset()
-    console.log(this.powers)
   }
-}
+
   public onDelete(hero: INeedAHero): void {
     this._hero.deleteHero(hero);
   }
+
   public nameFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.data = this._hero.getHeroes().filter(hero => hero.name.toLowerCase().includes(filterValue.toLowerCase()));
