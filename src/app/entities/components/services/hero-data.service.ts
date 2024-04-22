@@ -32,6 +32,7 @@ export class HeroDataService {
   public addHero(hero: INeedAHero): void {
     this.hallOfHeroes.push(hero);
   }
+  // public addPower() {}
 
   public getHeroes(): INeedAHero[] {
     return this.hallOfHeroes;

@@ -23,7 +23,7 @@
           <mat-label>Power</mat-label>
           <mat-select multiple
                       formControlName="power">
-            <mat-option *ngFor="let val of powers" [value]="' ' + val">
+            <mat-option *ngFor="let val of powers" [value]="val">
               {{ val }}
             </mat-option>
           </mat-select>

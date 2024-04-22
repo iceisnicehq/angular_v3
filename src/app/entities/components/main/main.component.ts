@@ -21,7 +21,7 @@ export class MainComponent {
   public data: INeedAHero[] = this._hero.getHeroes();
   public powers: string[] = this._hero.heroPower;
   public power: FormGroup = this._fb.createPowerForm()
-  public sortOrder: 'asc' | 'desc' = 'desc';
+  public sortOrder: string = 'desc';
 
   public panelOpenState: boolean = false;
 
@@ -65,7 +65,8 @@ export class MainComponent {
     const maxLevel = parseInt(maxLevelInput.value, 10);
     this.data = this._hero.getHeroes().filter(hero => hero.lvl >= minLevel && hero.lvl <= maxLevel);
   }
-  public sortHeroesByLevel(order: 'asc' | 'desc'): void {
+  public sortHeroesByLevel(order: string): void {
+    this.sortOrder = order;
     this.data.sort((a, b) => {
       return order === 'asc'
        ? a.lvl - b.lvl

@@ -8,5 +8,4 @@ export const routes: Routes = [
   { path: 'table', component: TableComponent },
   { path: 'main', component: MainComponent },
   {path: '**', component: PageNotFoundComponent}
-
 ];
