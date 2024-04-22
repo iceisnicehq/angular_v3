@@ -137,7 +137,7 @@
           <mat-form-field appearance="outline">
             <mat-label>Power</mat-label>
             <mat-select multiple>
-              <mat-option *ngFor="let val of powers" [value]="' ' + val">
+              <mat-option *ngFor="let val of powers" [value]="val">
                 {{ val }}
               </mat-option>
             </mat-select>
@@ -168,7 +168,7 @@
     </mat-expansion-panel-header>
     <p>Name: {{ hero.name }}</p>
     <p>Strength: {{ hero.strength }}</p>
-    <p>Powers: {{ hero.power }}</p>
+    <p>Powers: {{ hero.power.join(', ') }}</p>
     <p>Level: {{ hero.lvl }}</p>
     <button (click)="onDelete(hero)"
              mat-raised-button>

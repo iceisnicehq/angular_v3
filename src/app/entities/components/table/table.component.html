@@ -11,7 +11,7 @@
     <td>{{ hero.name }}</td>
     <td>{{ hero.lvl }}</td>
     <td>{{ hero.strength }}</td>
-    <td>{{ hero.power }}</td>
+    <td>{{ hero.power.join(', ') }}</td>
     <td>
       <button (click)="onDelete(hero)"
                mat-fab color="warn">

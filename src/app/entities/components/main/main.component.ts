@@ -5,6 +5,13 @@ import { FormGroup } from '@angular/forms';
 import { INeedAHero } from '../../interfaces/app.interface';
 import { HeroDataService } from '../services/hero-data.service';
 
+/**  TODO {Sorting Based On Power(s) + after adding a hero}
+          {Sorting Based On Level(min-max) after adding a hero}
+          {Sorting of the table (asc|desc)}
+          {Delete button for sorted array deletes a hero but doesnt refresh the array displayed in cards}
+          {}
+          (red field if empty)
+*/
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',

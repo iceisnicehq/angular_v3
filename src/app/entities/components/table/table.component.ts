@@ -10,7 +10,7 @@ import { MatTable } from '@angular/material/table';
 })
 export class TableComponent {
   public tableData = this._hero.getHeroes();
-  displayedColumns: string[] = ['name', 'lvl', 'strength', 'skill', 'delete'];
+  displayedColumns: string[] = ['name', 'lvl', 'strength', 'power', 'delete'];
   dataSource = this.tableData;
   constructor(private readonly _hero: HeroDataService) {}
   @ViewChild(MatTable) public table?: MatTable<INeedAHero>

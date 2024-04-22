@@ -10,19 +10,19 @@ export class HeroDataService {
   public hallOfHeroes: INeedAHero[] = [
     {
     name: 'Superman',
-    power: 'Strength',
+    power: ['Strength'],
     lvl: 10,
     strength: "10",
   },
     {
     name: 'Batman',
-    power: 'Stealth',
+    power: ['Stealth', 'Speed'],
     lvl: 5,
     strength: "10",
   },
     {
     name: 'Wonder Woman',
-    power: 'Strength',
+    power: ['Strength', 'Woman', 'Slay Queen'],
     lvl: 8,
     strength: "10",
   },
