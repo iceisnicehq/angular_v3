@@ -6,15 +6,8 @@ import { INeedAHero } from '../../interfaces/app.interface';
 import { HeroDataService } from '../services/hero-data.service';
 import { FilterService } from '../services/filter.service';
 
-/**  TODO {Sorting Based On Power(s) + after adding a hero}
-          {Sorting Based On Level(min-max) after adding a hero} works!!!
-          {Sorting of the table (asc|desc)} works!!!
-          {Delete button for sorted array deletes a hero but doesnt refresh the array displayed in cards} !!!
-          {Connect filters}
-                POSSIBLE IDEA (CRAZYYY)
-                  What if i make one big function for filtering, then i pass the data to it, i reassign data at first then i filter it.
-                  and so when a field is changed everything will be triggered.
-          (red field if empty)
+/**  TODO
+          (red field if empty) - optional
 */
 @Component({
   selector: 'app-main',
