@@ -23,7 +23,8 @@
           <mat-label>Power</mat-label>
           <mat-select multiple
                       formControlName="power">
-            <mat-option *ngFor="let val of powers" [value]="val">
+            <mat-option *ngFor="let val of powers"
+                        [value]="val">
               {{ val }}
             </mat-option>
           </mat-select>
@@ -68,7 +69,8 @@
 
 <div class="right">
   <div class="filter">
-    <mat-grid-list cols="12" rowHeight="85px">
+    <mat-grid-list cols="12"
+                   rowHeight="85px">
       <mat-grid-tile
           [colspan]="2"
           [rowspan]="2">
@@ -83,62 +85,64 @@
       [rowspan]="2">
       <div>
         <span> от
-          <mat-form-field class="toggles" appearance="outline">
+          <mat-form-field class="toggles"
+                          appearance="outline">
             <input matInput
                    type="number"
                    min=1
                    max=10
                    [value]="minLvl"
                    #minLevelInput
-                   (change)="bigFilter(input.value, minLevelInput.value, maxLevelInput.value, sortOrder, select.value)">
+                   (change)="bigFilter(search.value, minLevelInput.value, maxLevelInput.value, sortOrder, select.value)">
           </mat-form-field >
           <span style="display:inline-block; width: 16%;">
           </span>
         </span>
         <span>
           до
-          <mat-form-field class="toggles" appearance="outline">
+          <mat-form-field class="toggles"
+                          appearance="outline">
             <input matInput
-                  type="number"
-                  min=1
-                  max=10
-                  [value]="maxLvl"
-                  #maxLevelInput
-                  (change)="bigFilter(input.value, minLevelInput.value, maxLevelInput.value, sortOrder, select.value)">
+                   type="number"
+                   min=1
+                   max=10
+                   [value]="maxLvl"
+                   #maxLevelInput
+                   (change)="bigFilter(search.value, minLevelInput.value, maxLevelInput.value, sortOrder, select.value)">
           </mat-form-field>
           </span>
           <br/>
-          <mat-form-field class="search" appearance="outline">
-            <input matInput
-                  type="text"
-                  pattern="^[a-zA-zа-яА-я\s]*$"
-                  [value]="nameFilter"
-                  (keyup)="bigFilter(input.value, minLevelInput.value, maxLevelInput.value, sortOrder, select.value)"
-                  #input/>
+          <mat-form-field class="search"
+                          appearance="outline">
+            <input matInput 
+                   type="text"
+                   pattern="^[a-zA-zа-яА-я\s]*$"
+                   [value]="nameFilter"
+                   (keyup)="bigFilter(search.value, minLevelInput.value, maxLevelInput.value, sortOrder, select.value)"
+                   #search/>
           </mat-form-field>
       </div>
       </mat-grid-tile>
 
-      <mat-grid-tile
-      [colspan]="3"
-      [rowspan]="2">
+      <mat-grid-tile [colspan]="3"
+                     [rowspan]="2">
         <div>
           <p>Powers</p>
           <br/>
           <p>Sort by level</p>
         </div>
       </mat-grid-tile>
-      <mat-grid-tile
-      [colspan]="3"
-      [rowspan]="2">
+      <mat-grid-tile [colspan]="3"
+                     [rowspan]="2">
         <div>
           <mat-form-field appearance="outline">
             <mat-label>Power</mat-label>
             <mat-select multiple
                         [value]="powerFilter"
                         #select
-                        (valueChange)="bigFilter(input.value, minLevelInput.value, maxLevelInput.value, sortOrder, select.value)">
-              <mat-option *ngFor="let val of powers" [value]="val">
+                        (valueChange)="bigFilter(search.value, minLevelInput.value, maxLevelInput.value, sortOrder, select.value)">
+              <mat-option *ngFor="let val of powers"
+                          [value]="val">
                 {{ val }}
               </mat-option>
             </mat-select>
@@ -147,7 +151,7 @@
           <mat-form-field appearance="outline">
             <mat-label>Level</mat-label>
             <mat-select [(value)]="sortOrder"
-                        (valueChange)="bigFilter(input.value, minLevelInput.value, maxLevelInput.value, sortOrder, select.value)">
+                        (valueChange)="bigFilter(search.value, minLevelInput.value, maxLevelInput.value, sortOrder, select.value)">
               <mat-option value="asc">
                 Ascending
               </mat-option>
