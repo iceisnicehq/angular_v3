@@ -43,7 +43,6 @@ export class MainComponent implements AfterViewInit {
   public ngAfterViewInit(): void {
     this.bigFilter(this.nameFilter, this.minLvl, this.maxLvl, this.sortOrder, this.powerFilter);
     this._cdr.detectChanges();
-    console.log('filters are applied')
  }
 
   public onSave(): void {
@@ -64,6 +63,7 @@ export class MainComponent implements AfterViewInit {
   }
 
   public bigFilter(name: string, minLevelInput: string | Number, maxLevelInput: string | Number, order: string, powers: string[] ): void {
+    console.log('Applying filters...')
     this.nameFilter = this._filter.nameFilter = name
     this.minLvl = this._filter.minLvlFilter = Number(minLevelInput);
     this.maxLvl = this._filter.maxLvlFilter = Number(maxLevelInput);
