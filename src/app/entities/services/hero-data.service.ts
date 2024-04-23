@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-// import { BehaviorSubject, Subject } from 'rxjs';
 import { INeedAHero } from '../interfaces/app.interface';
-// import { FilterService } from './filter.service';
 
 @Injectable({
   providedIn: 'root'
@@ -31,18 +29,19 @@ export class HeroDataService {
   public heroPower: string[] = ['Strength', 'Speed', 'Flight', 'Stealth', 'Woman', 'Human', 'Alien', 'Smart']
 
   public addHero(hero: INeedAHero): void {
+    hero.name = hero.name.toLowerCase();
     hero.name = hero.name.charAt(0).toUpperCase() + hero.name.slice(1);
     this.hallOfHeroes.push(hero);
   }
 
   public addPower(power: string): void {
+    power = power.charAt(0).toUpperCase() + power.slice(1);
     if (this.heroPower.includes(power)) {
       alert("This power is already in the list.");
     }
     else {
-      this.heroPower.push(power.charAt(0).toUpperCase() + power.slice(1));
+      this.heroPower.push(power);
       this.heroPower.sort();
-
   }
   }
 

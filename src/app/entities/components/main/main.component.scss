@@ -1,12 +1,9 @@
 :host {
-  /* Control the left side */
-
   .left {
     position: absolute;
     height: 100%;
     width: 24%;
-    left: 16px;
-    // background-color: #183891;
+    left: 1.5%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -35,9 +32,8 @@
       }
     }
   }
-
   .right {
-    right: 48px;
+    right: 1%;
     height: 100%;
     width: 60%;
     padding-right: 60px;
@@ -52,7 +48,7 @@
             width: 65px;
         }
         .search {
-          width: auto;
+          width: 97%;
         }
       }
     }

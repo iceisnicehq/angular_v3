@@ -49,7 +49,7 @@
   </form>
   <form [formGroup]="power">
     <div class="power">
-      <p>Добавление способностей</p>
+      <p>Adding a new power</p>
       <mat-form-field appearance="outline">
         <mat-label>New power</mat-label>
         <input matInput
@@ -84,7 +84,7 @@
       [colspan]="4"
       [rowspan]="2">
       <div>
-        <span> от
+        <span> From:
           <mat-form-field class="toggles"
                           appearance="outline">
             <input matInput
@@ -94,12 +94,10 @@
                    [value]="minLvl"
                    #minLevelInput
                    (change)="bigFilter(search.value, minLevelInput.value, maxLevelInput.value, sortOrder, select.value)">
-          </mat-form-field >
-          <span style="display:inline-block; width: 16%;">
-          </span>
+          </mat-form-field>
         </span>
         <span>
-          до
+          To:
           <mat-form-field class="toggles"
                           appearance="outline">
             <input matInput
