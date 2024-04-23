@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { INeedAHero } from '../../interfaces/app.interface';
+import { INeedAHero } from '../interfaces/app.interface';
 
 @Injectable({
   providedIn: 'root'

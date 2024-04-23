@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 // import { BehaviorSubject, Subject } from 'rxjs';
-import { INeedAHero } from '../../interfaces/app.interface';
+import { INeedAHero } from '../interfaces/app.interface';
 // import { FilterService } from './filter.service';
 
 @Injectable({

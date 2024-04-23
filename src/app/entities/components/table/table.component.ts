@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { HeroDataService } from '../services/hero-data.service';
+import { HeroDataService } from '../../services/hero-data.service';
 import { INeedAHero } from '../../interfaces/app.interface';
 import { MatTable } from '@angular/material/table';
 
