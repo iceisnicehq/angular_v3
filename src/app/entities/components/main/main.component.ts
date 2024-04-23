@@ -48,23 +48,16 @@ export class MainComponent implements AfterViewInit {
   ) {}
 
   ngAfterViewInit(): void {
-    this.applyFilters();
+    this.bigFilter(this.nameFilter, this.minLvl, this.maxLvl, this.sortOrder, this.powerFilter);
     this._cdr.detectChanges();
-
-    console.log(this.nameFilter)
     console.log('filters are applied')
  }
 
   public onSave(): void {
     this._hero.hallOfHeroes.push(this.heroForm.value);
-    this.sortHeroesByLevel(this.sortOrder);
     this.data = this._hero.getHeroes();
     this.heroForm.reset()
-    this.applyFilters();
-    // this.filterByName(this.nameFilter);
-    // this.sortHeroesByLevel(this.sortOrder);
-    // this.filterByPower(this.powerFilter);
-    // this.levelFilter(this.minLvl, this.maxLvl);
+    this.bigFilter(this.nameFilter, this.minLvl, this.maxLvl, this.sortOrder, this.powerFilter);
   }
   public onPower(): void {
     this._hero.addPower(this.power.value.power)
@@ -73,45 +66,23 @@ export class MainComponent implements AfterViewInit {
 
   public onDelete(hero: INeedAHero): void {
     this._hero.deleteHero(hero);
-    this.applyFilters();
+    this.bigFilter(this.nameFilter, this.minLvl, this.maxLvl, this.sortOrder, this.powerFilter);
 
   }
 
-  public filterByName(name: string): void {
+  public bigFilter(name: string, minLevelInput: string | Number, maxLevelInput: string | Number, order: string, powers: string[] ): void {
     this.nameFilter = this._filter.nameFilter = name
-    this.data = this._hero.getHeroes().filter(hero => hero.name.toLowerCase().includes(name.toLowerCase()));
-    console.log(this.nameFilter + " NAME_APPLIED")
-  }
-
-  public levelFilter(minLevelInput: string | Number, maxLevelInput: string | Number): void {
     this.minLvl = this._filter.minLvlFilter = Number(minLevelInput);
-    this.maxLvl = this._filter.maxLvlFilter = Number(maxLevelInput)
-    this.data = this._hero.getHeroes().filter(hero => hero.lvl >= this.minLvl && hero.lvl <= this.maxLvl);
-    console.log(this.minLvl + " LVL_APPLIED")
-
-  }
-
-  public sortHeroesByLevel(order: string): void {
+    this.maxLvl = this._filter.maxLvlFilter = Number(maxLevelInput);
+    this.powerFilter = this._filter.powerFilter = powers;
     this.sortOrder = this._filter.orderFilter = order;
+    this.data = this._hero.getHeroes().filter(hero => hero.name.toLowerCase().includes(name.toLowerCase()))
+                                      .filter(hero => hero.lvl >= this.minLvl && hero.lvl <= this.maxLvl)
+                                      .filter(hero => powers.every(power => hero.power.includes(power)));
     this.data.sort((a, b) => {
-      console.log(this.sortOrder + " sort_APPLIED")
       return order === 'asc'
        ? a.lvl - b.lvl
         : b.lvl - a.lvl;
-
     });
-  }
-  public filterByPower(powers: string[]): void
-  {
-    this.powerFilter = this._filter.powerFilter = powers
-    this.data = this._hero.getHeroes().filter(hero => powers.every(power => hero.power.includes(power)));
-    console.log(this.powerFilter + " power_APPLIED")
-  }
-  public applyFilters(): void {
-    // Apply filters here
-    this.filterByName(this.nameFilter);
-    this.sortHeroesByLevel(this.sortOrder);
-    this.filterByPower(this.powerFilter);
-    this.levelFilter(this.minLvl, this.maxLvl);
   }
 }

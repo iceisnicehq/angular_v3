@@ -68,7 +68,7 @@
 
 <div class="right">
   <div class="filter">
-    <mat-grid-list cols="12" rowHeight="80px">
+    <mat-grid-list cols="12" rowHeight="85px">
       <mat-grid-tile
           [colspan]="2"
           [rowspan]="2">
@@ -90,7 +90,7 @@
                    max=10
                    [value]="minLvl"
                    #minLevelInput
-                   (change)="levelFilter(minLevelInput.value, maxLevelInput.value)">
+                   (change)="bigFilter(input.value, minLevelInput.value, maxLevelInput.value, sortOrder, select.value)">
           </mat-form-field >
           <span style="display:inline-block; width: 16%;">
           </span>
@@ -104,7 +104,7 @@
                   max=10
                   [value]="maxLvl"
                   #maxLevelInput
-                  (change)="levelFilter(minLevelInput.value, maxLevelInput.value)">
+                  (change)="bigFilter(input.value, minLevelInput.value, maxLevelInput.value, sortOrder, select.value)">
           </mat-form-field>
           </span>
           <br/>
@@ -113,7 +113,7 @@
                   type="text"
                   pattern="^[a-zA-zа-яА-я\s]*$"
                   [value]="nameFilter"
-                  (keyup)="filterByName(input.value)"
+                  (keyup)="bigFilter(input.value, minLevelInput.value, maxLevelInput.value, sortOrder, select.value)"
                   #input/>
           </mat-form-field>
       </div>
@@ -134,7 +134,10 @@
         <div>
           <mat-form-field appearance="outline">
             <mat-label>Power</mat-label>
-            <mat-select multiple [value]="powerFilter" #select (valueChange)="filterByPower(select.value) ">
+            <mat-select multiple
+                        [value]="powerFilter"
+                        #select
+                        (valueChange)="bigFilter(input.value, minLevelInput.value, maxLevelInput.value, sortOrder, select.value)">
               <mat-option *ngFor="let val of powers" [value]="val">
                 {{ val }}
               </mat-option>
@@ -143,7 +146,8 @@
           <br/>
           <mat-form-field appearance="outline">
             <mat-label>Level</mat-label>
-            <mat-select [(value)]="sortOrder" (valueChange)="sortHeroesByLevel(sortOrder)">
+            <mat-select [(value)]="sortOrder"
+                        (valueChange)="bigFilter(input.value, minLevelInput.value, maxLevelInput.value, sortOrder, select.value)">
               <mat-option value="asc">
                 Ascending
               </mat-option>
@@ -157,7 +161,6 @@
     </mat-grid-list>
   </div>
   <div>
-    <!-- neeeds ng for for all heroes -->
     <mat-expansion-panel *ngFor="let hero of data">
     <mat-expansion-panel-header>
       <mat-panel-description>
