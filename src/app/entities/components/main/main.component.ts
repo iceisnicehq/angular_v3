@@ -27,7 +27,7 @@ export class MainComponent implements AfterViewInit {
   public heroForm: FormGroup = this._fb.createForm()
   public power: FormGroup = this._fb.createPowerForm()
 
-  public powers: string[] = this._hero.heroPower;
+  public powers: string[] = this._hero.heroPower.sort();
 
   public nameFilter: string = this._filter.nameFilter;
   public minLvl: number = this._filter.minLvlFilter;
@@ -47,14 +47,14 @@ export class MainComponent implements AfterViewInit {
 
   ) {}
 
-  ngAfterViewInit(): void {
+  public ngAfterViewInit(): void {
     this.bigFilter(this.nameFilter, this.minLvl, this.maxLvl, this.sortOrder, this.powerFilter);
     this._cdr.detectChanges();
     console.log('filters are applied')
  }
 
   public onSave(): void {
-    this._hero.hallOfHeroes.push(this.heroForm.value);
+    this._hero.addHero(this.heroForm.value);
     this.data = this._hero.getHeroes();
     this.heroForm.reset()
     this.bigFilter(this.nameFilter, this.minLvl, this.maxLvl, this.sortOrder, this.powerFilter);
@@ -76,7 +76,7 @@ export class MainComponent implements AfterViewInit {
     this.maxLvl = this._filter.maxLvlFilter = Number(maxLevelInput);
     this.powerFilter = this._filter.powerFilter = powers;
     this.sortOrder = this._filter.orderFilter = order;
-    this.data = this._hero.getHeroes().filter(hero => hero.name.toLowerCase().includes(name.toLowerCase()))
+    this.data = this._hero.getHeroes().filter(hero => name.length >= 2 ? hero.name.toLowerCase().includes(name.toLowerCase()) : true)
                                       .filter(hero => hero.lvl >= this.minLvl && hero.lvl <= this.maxLvl)
                                       .filter(hero => powers.every(power => hero.power.includes(power)));
     this.data.sort((a, b) => {

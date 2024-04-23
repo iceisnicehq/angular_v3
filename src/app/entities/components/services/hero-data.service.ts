@@ -31,6 +31,7 @@ export class HeroDataService {
   public heroPower: string[] = ['Strength', 'Speed', 'Flight', 'Stealth', 'Woman', 'Human', 'Alien', 'Smart']
 
   public addHero(hero: INeedAHero): void {
+    hero.name = hero.name.charAt(0).toUpperCase() + hero.name.slice(1);
     this.hallOfHeroes.push(hero);
   }
 
@@ -39,7 +40,9 @@ export class HeroDataService {
       alert("This power is already in the list.");
     }
     else {
-    this.heroPower.push(power)
+      this.heroPower.push(power.charAt(0).toUpperCase() + power.slice(1));
+      this.heroPower.sort();
+
   }
   }
 
