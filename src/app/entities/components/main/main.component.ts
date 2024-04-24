@@ -101,7 +101,6 @@ export class MainComponent implements AfterViewInit {
     private readonly _hero: HeroDataService,
     private readonly _filter: FilterService,
     private readonly _cdr: ChangeDetectorRef
-
   ) {}
    /**
    * Фильтрация после создания компонента, а также детекция изменений
@@ -159,7 +158,7 @@ export class MainComponent implements AfterViewInit {
     this.bigFilter(this.nameFilter, this.minLvl, this.maxLvl, this.sortOrder, this.powerFilter);
   }
    /**
-   * Функция фильрации
+   * Функция фильтрации
    *
    * @method
    * @description метод для фильтрации карточек героев

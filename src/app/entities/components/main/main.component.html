@@ -1,19 +1,15 @@
 <div class="left">
   <form [formGroup]="heroForm">
     <div class="create">
-        <p>
-          Name
-        </p>
+        <p>Name</p>
         <mat-form-field appearance="outline">
           <mat-label>Name</mat-label>
           <input matInput
-                 formControlName="name"
-                 type="text"
-                 pattern="^[a-zA-zа-яА-я\s]*$"/>
+                formControlName="name"
+                type="text"
+                pattern="^[a-zA-zа-яА-я\s]*$"/>
         </mat-form-field>
-        <p>
-          Strength
-        </p>
+        <p>Strength</p>
         <mat-form-field appearance="outline">
           <mat-label>Strength</mat-label>
           <input matInput
@@ -22,9 +18,7 @@
                  min="1"
                  max="10"/>
         </mat-form-field>
-        <p>
-          Powers
-        </p>
+        <p>Powers</p>
         <mat-form-field appearance="outline">
           <mat-label>Power</mat-label>
           <mat-select multiple
@@ -35,46 +29,44 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <p>
-          Level
-        </p>
+        <p>Level</p>
         <mat-form-field appearance="outline">
           <mat-label>Level</mat-label>
           <input matInput
-                 formControlName="lvl"
-                 type="number"
-                 min="1"
-                 max="10"/>
+                formControlName="lvl"
+                type="number"
+                min="1"
+                max="10"/>
         </mat-form-field>
         <br/>
         <button mat-raised-button
                 [disabled]="!heroForm.valid"
-                (click)="onSave()"
                 type="button"
+                (click)="onSave()"
                 color="primary"
                 >Create</button>
     </div>
   </form>
   <form [formGroup]="power">
     <div class="power">
-      <p>
-        Adding a new power
-      </p>
+      <p>Adding a new power</p>
       <mat-form-field appearance="outline">
         <mat-label>New power</mat-label>
         <input matInput
-               formControlName="power"
-               type="text"/>
+              formControlName="power"
+              type="text"/>
       </mat-form-field>
       <br/>
       <button mat-raised-button
               [disabled]="!power.valid"
+              color="primary"
               (click)="onPower()"
-              type="reset"
-              color="primary">Add power</button>
+              type="reset">Add power</button>
     </div>
   </form>
+
 </div>
+
 <div class="right">
   <div class="filter">
     <mat-grid-list cols="12"
@@ -95,50 +87,47 @@
         <span> From:
           <mat-form-field class="toggles"
                           appearance="outline">
-            <input #minLevelInput
-                   matInput
-                   [value]="minLvl"
-                   (change)="bigFilter(search.value, minLevelInput.value, maxLevelInput.value, sortOrder, select.value)"
+            <input matInput
                    type="number"
                    min=1
-                   max=10>
+                   max=10
+                   [value]="minLvl"
+                   #minLevelInput
+                   (change)="bigFilter(search.value, minLevelInput.value, maxLevelInput.value, sortOrder, select.value)">
           </mat-form-field>
         </span>
         <span>
           To:
           <mat-form-field class="toggles"
                           appearance="outline">
-            <input #maxLevelInput
-                   matInput
-                   [value]="maxLvl"
-                   (change)="bigFilter(search.value, minLevelInput.value, maxLevelInput.value, sortOrder, select.value)"
+            <input matInput
                    type="number"
                    min=1
-                   max=10/>
+                   max=10
+                   [value]="maxLvl"
+                   #maxLevelInput
+                   (change)="bigFilter(search.value, minLevelInput.value, maxLevelInput.value, sortOrder, select.value)">
           </mat-form-field>
           </span>
           <br/>
           <mat-form-field class="search"
                           appearance="outline">
-            <input #search
-                   matInput
+            <input matInput
+                   type="text"
+                   pattern="^[a-zA-zа-яА-я\s]*$"
                    [value]="nameFilter"
                    (keyup)="bigFilter(search.value, minLevelInput.value, maxLevelInput.value, sortOrder, select.value)"
-                   type="text"
-                   pattern="^[a-zA-zа-яА-я\s]*$"/>
+                   #search/>
           </mat-form-field>
       </div>
       </mat-grid-tile>
+
       <mat-grid-tile [colspan]="3"
                      [rowspan]="2">
         <div>
-          <p>
-            Powers
-          </p>
+          <p>Powers</p>
           <br/>
-          <p>
-            Sort by level
-          </p>
+          <p>Sort by level</p>
         </div>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="3"
@@ -146,9 +135,9 @@
         <div>
           <mat-form-field appearance="outline">
             <mat-label>Power</mat-label>
-            <mat-select #select
-                        multiple
+            <mat-select multiple
                         [value]="powerFilter"
+                        #select
                         (valueChange)="bigFilter(search.value, minLevelInput.value, maxLevelInput.value, sortOrder, select.value)">
               <mat-option *ngFor="let val of powers"
                           [value]="val">
@@ -180,20 +169,12 @@
       {{ hero.name }}
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <p>
-      Name: {{ hero.name }}
-    </p>
-    <p>
-      Strength: {{ hero.strength }}
-    </p>
-    <p>
-      Powers: {{ hero.power.join(', ') }}
-    </p>
-    <p>
-      Level: {{ hero.lvl }}
-    </p>
-    <button mat-raised-button
-            (click)="onDelete(hero)">
+    <p>Name: {{ hero.name }}</p>
+    <p>Strength: {{ hero.strength }}</p>
+    <p>Powers: {{ hero.power.join(', ') }}</p>
+    <p>Level: {{ hero.lvl }}</p>
+    <button (click)="onDelete(hero)"
+             mat-raised-button>
             Delete {{ hero.name }}
     </button>
     </mat-expansion-panel>

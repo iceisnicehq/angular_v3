@@ -1,11 +1,20 @@
 import { Injectable } from '@angular/core';
 import { INeedAHero } from '../interfaces/app.interface';
-
+/**
+ * @service {HeroDataService}
+ * @description для хранения данных о героях
+ * и взаимодействия с массивом героев
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class HeroDataService {
-
+   /**
+   * Изначальный массив объектов типа интерфейса INeedAHero,
+   *
+   * @public
+   * @type {INeedAHero[]}
+   */
   public hallOfHeroes: INeedAHero[] = [
     {
     name: 'Superman',
@@ -26,14 +35,34 @@ export class HeroDataService {
     strength: "10",
   },
 ]
+   /**
+   * Изначальный массив(строковый) способностей героев,
+   *
+   * @public
+   * @type {string[]}
+   */
   public heroPower: string[] = ['Strength', 'Speed', 'Flight', 'Stealth', 'Woman', 'Human', 'Alien', 'Smart']
-
+   /**
+   * функция добавления героя
+   *
+   * @method
+   * @description сохраняет героя в массив героев
+   * @public
+   * @return {void}
+   */
   public addHero(hero: INeedAHero): void {
     hero.name = hero.name.toLowerCase();
     hero.name = hero.name.charAt(0).toUpperCase() + hero.name.slice(1);
     this.hallOfHeroes.push(hero);
   }
-
+   /**
+   * функция добавления способности
+   *
+   * @method
+   * @description сохраняет способность в массив способностей
+   * @public
+   * @return {void}
+   */
   public addPower(power: string): void {
     power = power.charAt(0).toUpperCase() + power.slice(1);
     if (this.heroPower.includes(power)) {
@@ -44,10 +73,25 @@ export class HeroDataService {
       this.heroPower.sort();
   }
   }
-
+   /**
+   * функция получения(значения) всех героев
+   *
+   * @method
+   * @description возвращает массив героев типа интерфейса INeedAHero[]
+   * @public
+   * @return {INeedAHero[]}
+   */
   public getHeroes(): INeedAHero[] {
     return this.hallOfHeroes;
   }
+     /**
+   * функция удаления
+   *
+   * @method
+   * @description удаляет героя из массива
+   * @public
+   * @return {void}
+   */
   public deleteHero(hero: INeedAHero): void {
     const index: number = this.hallOfHeroes.findIndex((item) => item === hero);
     this.hallOfHeroes.splice(index, 1);

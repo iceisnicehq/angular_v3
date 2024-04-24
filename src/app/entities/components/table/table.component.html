@@ -4,31 +4,28 @@
         class="mat-elevation-z8">
   <ng-container matColumnDef="name">
     <th mat-header-cell
-        *matHeaderCellDef> Name </th>
+        *matHeaderCellDef>Name</th>
     <td mat-cell
-        *matCellDef="let hero"> {{ hero.name }} </td>
+        *matCellDef="let hero"> {{ hero.name }}</td>
   </ng-container>
-
   <ng-container matColumnDef="lvl">
     <th mat-header-cell
-        *matHeaderCellDef> Level </th>
+        *matHeaderCellDef>Level</th>
     <td mat-cell
         *matCellDef="let hero"> {{ hero.lvl }} </td>
   </ng-container>
-
   <ng-container matColumnDef="strength">
     <th mat-header-cell
-        *matHeaderCellDef> Strength </th>
+        *matHeaderCellDef>Strength</th>
     <td mat-cell
-        *matCellDef="let hero"> {{ hero.strength }} </td>
+        *matCellDef="let hero">{{ hero.strength }}</td>
   </ng-container>
-
   <ng-container matColumnDef="power">
     <th mat-header-cell
-        *matHeaderCellDef> Abilities </th>
-    <td mat-cell *matCellDef="let hero"> {{ hero.power.join(', ') }} </td>
+        *matHeaderCellDef>Abilities</th>
+    <td mat-cell
+        *matCellDef="let hero">{{ hero.power.join(', ') }}</td>
   </ng-container>
-
   <ng-container matColumnDef="delete">
     <th mat-header-cell
         *matHeaderCellDef> Delete </th>
@@ -44,33 +41,8 @@
 
   <tr mat-header-row
       *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row
-      *matRowDef="let row;
-      columns: displayedColumns;"></tr>
+  <tr  *matRowDef="let row;
+       columns: displayedColumns;"
+       mat-row></tr>
 </table>
 </div>
-
-<!--
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Level</th>
-    <th>Strength</th>
-    <th>Abilities</th>
-    <th>Delete</th>
-
-  </tr>
-  <tr *ngFor="let hero of tableData">
-    <td>{{ hero.name }}</td>
-    <td>{{ hero.lvl }}</td>
-    <td>{{ hero.strength }}</td>
-    <td>{{ hero.power.join(', ') }}</td>
-    <td>
-      <button (click)="onDelete(hero)"
-               mat-fab color="warn">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </td>
-  </tr>
-</table>
--->

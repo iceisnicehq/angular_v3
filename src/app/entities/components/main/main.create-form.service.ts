@@ -14,11 +14,17 @@ import {
 })
 
 export class CreateForm {
+    /**
+   * Объявление конструктора
+   *
+   * @param {MatDialog} _dialog - сервис диалога
+   * @param {destroyRef} _destroyRef - отписка
+   */
   constructor(private readonly _fb: FormBuilder) {}
   /**
-   * @method createDialogForm
+   * @method createForm
    * @description создание форм группы
-   * @param {INeedAHero} [data] - начальные данные из главного компонента
+   * для добавления героя
    * @returns {FormGroup} возвращает форм группу
    */
   public createForm(): FormGroup {
@@ -29,6 +35,12 @@ export class CreateForm {
         lvl: new FormControl(1, [Validators.required])
       });
   }
+   /**
+   * @method createPowerForm
+   * @description создание форм группы
+   * для добавления способностей
+   * @returns {FormGroup} возвращает форм группу
+   */
   public createPowerForm(): FormGroup {
     return this._fb.group({
       power: new FormControl('', [Validators.required]),
