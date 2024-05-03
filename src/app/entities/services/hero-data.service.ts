@@ -34,14 +34,14 @@ export class HeroDataService {
     lvl: 8,
     strength: "10",
   },
-]
+];
    /**
    * Изначальный массив(строковый) способностей героев,
    *
    * @public
    * @type {string[]}
    */
-  public heroPower: string[] = ['Strength', 'Speed', 'Flight', 'Stealth', 'Woman', 'Human', 'Alien', 'Smart']
+  public heroPower: string[] = ['Strength', 'Speed', 'Flight', 'Stealth', 'Woman', 'Human', 'Alien', 'Smart'];
    /**
    * функция добавления героя
    *
@@ -54,7 +54,7 @@ export class HeroDataService {
     hero.name = hero.name.toLowerCase();
     hero.name = hero.name.charAt(0).toUpperCase() + hero.name.slice(1);
     this.hallOfHeroes.push(hero);
-  }
+  };
    /**
    * функция добавления способности
    *
@@ -71,8 +71,8 @@ export class HeroDataService {
     else {
       this.heroPower.push(power);
       this.heroPower.sort();
-  }
-  }
+    }
+  };
    /**
    * функция получения(значения) всех героев
    *
@@ -83,7 +83,7 @@ export class HeroDataService {
    */
   public getHeroes(): INeedAHero[] {
     return this.hallOfHeroes;
-  }
+  };
      /**
    * функция удаления
    *
@@ -95,5 +95,5 @@ export class HeroDataService {
   public deleteHero(hero: INeedAHero): void {
     const index: number = this.hallOfHeroes.findIndex((item) => item === hero);
     this.hallOfHeroes.splice(index, 1);
-  }
+  };
 }

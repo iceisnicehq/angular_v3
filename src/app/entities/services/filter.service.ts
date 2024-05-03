@@ -34,12 +34,12 @@ export class FilterService {
    * @public
    * @type {number}
    */
-  public minLvlFilter: number = 1
+  public minLvlFilter: number = 1;
    /**
    * верхнее значение для фильтрации по уровню
    *
    * @public
    * @type {number}
    */
-  public maxLvlFilter: number = 10
+  public maxLvlFilter: number = 10;
 }

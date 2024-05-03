@@ -1,15 +1,28 @@
 import { Component, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { CreateForm } from './main.create-form.service';
 import { FormGroup } from '@angular/forms';
-// import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { INeedAHero } from '../../interfaces/app.interface';
 import { HeroDataService } from '../../services/hero-data.service';
 import { FilterService } from '../../services/filter.service';
 
-/**  TODO
-          (red field if empty) - optional
-*/
-
+// TO-DO
+// Порядок атрибутов, поправить во всех файлах:
+// @lena_rogoleva · right now
+// <button [disabled]="!heroForm.valid"
+        // (click)="onSave()"
+        // mat-raised-button
+        // type="button"
+        // color="primary">
+        // Create
+// </button>
+// CURRENT
+// <button mat-raised-button
+        // [disabled]="!heroForm.valid"
+        // type="button"
+        // (click)="onSave()"
+        // color="primary"
+// >Create</button>
+// в аннотации необходимо также указывать @param (параметры, которые принимает функция)
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -30,14 +43,14 @@ export class MainComponent implements AfterViewInit {
    * @public
    * @type {FormGroup}
    */
-  public heroForm: FormGroup = this._fb.createForm()
+  public heroForm: FormGroup = this._fb.createForm();
    /**
    * объявление форм групы power
    *
    * @public
    * @type {FormGroup}
    */
-  public power: FormGroup = this._fb.createPowerForm()
+  public power: FormGroup = this._fb.createPowerForm();
    /**
    * отсортированный массив строк типа string,
    * Получаемый из сервиса hero-data.service
@@ -101,7 +114,7 @@ export class MainComponent implements AfterViewInit {
     private readonly _hero: HeroDataService,
     private readonly _filter: FilterService,
     private readonly _cdr: ChangeDetectorRef
-  ) {}
+  ) {};
    /**
    * Фильтрация после создания компонента, а также детекция изменений
    *
@@ -114,7 +127,7 @@ export class MainComponent implements AfterViewInit {
   public ngAfterViewInit(): void {
     this.bigFilter(this.nameFilter, this.minLvl, this.maxLvl, this.sortOrder, this.powerFilter);
     this._cdr.detectChanges();
- }
+ };
    /**
    * функция сохранения героя.
    *
@@ -132,7 +145,7 @@ export class MainComponent implements AfterViewInit {
       }
     )
     this.bigFilter(this.nameFilter, this.minLvl, this.maxLvl, this.sortOrder, this.powerFilter);
-  }
+  };
    /**
    * Сохранение новой способности
    *
@@ -144,7 +157,7 @@ export class MainComponent implements AfterViewInit {
   public onPower(): void {
     this._hero.addPower(this.power.value.power.toLowerCase())
     this.power.reset()
-  }
+  };
    /**
    * Удаление героя
    *
@@ -156,7 +169,7 @@ export class MainComponent implements AfterViewInit {
   public onDelete(hero: INeedAHero): void {
     this._hero.deleteHero(hero);
     this.bigFilter(this.nameFilter, this.minLvl, this.maxLvl, this.sortOrder, this.powerFilter);
-  }
+  };
    /**
    * Функция фильтрации
    *
@@ -181,5 +194,5 @@ export class MainComponent implements AfterViewInit {
        ? a.lvl - b.lvl
         : b.lvl - a.lvl;
     });
-  }
+  };
 }

@@ -37,7 +37,7 @@ export class TableComponent {
    *
    * @param {HeroDataService} _hero Сервис hero-data.service
    */
-  constructor(private readonly _hero: HeroDataService) {}
+  constructor(private readonly _hero: HeroDataService) {};
   /**
    * Ссылка на таблицу
    *
@@ -55,5 +55,5 @@ export class TableComponent {
  public onDelete(hero: INeedAHero): void {
   this._hero.deleteHero(hero);
     this.table?.renderRows();
-  }
+  };
 }

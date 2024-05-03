@@ -20,7 +20,7 @@ export class CreateForm {
    * @param {MatDialog} _dialog - сервис диалога
    * @param {destroyRef} _destroyRef - отписка
    */
-  constructor(private readonly _fb: FormBuilder) {}
+  constructor(private readonly _fb: FormBuilder) {};
   /**
    * @method createForm
    * @description создание форм группы
@@ -34,7 +34,7 @@ export class CreateForm {
         power: new FormControl('', [Validators.required]),
         lvl: new FormControl(1, [Validators.required])
       });
-  }
+  };
    /**
    * @method createPowerForm
    * @description создание форм группы
@@ -45,5 +45,5 @@ export class CreateForm {
     return this._fb.group({
       power: new FormControl('', [Validators.required]),
     });
-  }
-}
+  };
+};
