@@ -179,11 +179,11 @@ export class MainComponent implements AfterViewInit {
    * по всем критериям и сохранения этих значений в сервис
    * для использования при инициализации компонента
    * @public
-   * @param {string} name
-   * @param {string | Number} minLevelInput
-   * @param {string | Number} maxLevelInput
-   * @param {string} order
-   * @param {string[]} powers
+   * @param {string} name - имя для поиска
+   * @param {string | Number} minLevelInput -мин уровень для поиска
+   * @param {string | Number} maxLevelInput -макс уровень для поиска
+   * @param {string} order - порядок сортинга
+   * @param {string[]} powers - массив сил для фильтрации
    * @return {void}
    */
   public bigFilter(name: string, minLevelInput: string | Number, maxLevelInput: string | Number, order: string, powers: string[] ): void {
