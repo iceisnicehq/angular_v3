@@ -48,6 +48,7 @@ export class HeroDataService {
    * @method
    * @description сохраняет героя в массив героев
    * @public
+   * @param {INeedAHero} hero
    * @return {void}
    */
   public addHero(hero: INeedAHero): void {
@@ -61,6 +62,7 @@ export class HeroDataService {
    * @method
    * @description сохраняет способность в массив способностей
    * @public
+   * @param {string} power
    * @return {void}
    */
   public addPower(power: string): void {
@@ -90,6 +92,7 @@ export class HeroDataService {
    * @method
    * @description удаляет героя из массива
    * @public
+   * @param {INeedAHero} hero
    * @return {void}
    */
   public deleteHero(hero: INeedAHero): void {

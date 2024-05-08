@@ -50,6 +50,7 @@ export class TableComponent {
    * @method
    * @description метод для удаления героя из массива
    * @public
+   * @param {INeedAHero} hero
    * @return {void}
    */
  public onDelete(hero: INeedAHero): void {

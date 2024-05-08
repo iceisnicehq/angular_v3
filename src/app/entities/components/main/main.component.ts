@@ -164,6 +164,7 @@ export class MainComponent implements AfterViewInit {
    * @method
    * @description метод для удаления героя из массива
    * @public
+   * @param {INeedAHero} hero
    * @return {void}
    */
   public onDelete(hero: INeedAHero): void {
@@ -178,6 +179,11 @@ export class MainComponent implements AfterViewInit {
    * по всем критериям и сохранения этих значений в сервис
    * для использования при инициализации компонента
    * @public
+   * @param {string} name
+   * @param {string | Number} minLevelInput
+   * @param {string | Number} maxLevelInput
+   * @param {string} order
+   * @param {string[]} powers
    * @return {void}
    */
   public bigFilter(name: string, minLevelInput: string | Number, maxLevelInput: string | Number, order: string, powers: string[] ): void {
